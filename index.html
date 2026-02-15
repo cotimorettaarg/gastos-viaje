@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -12,666 +11,663 @@
             box-sizing: border-box;
         }
 
-```
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        padding: 20px;
-    }
-
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    h1 {
-        color: white;
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 2em;
-    }
-
-    .sync-status {
-        background: rgba(255,255,255,0.2);
-        color: white;
-        padding: 10px;
-        border-radius: 8px;
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 0.9em;
-    }
-
-    .sync-status.connected {
-        background: rgba(46, 204, 113, 0.3);
-    }
-
-    .sync-status.disconnected {
-        background: rgba(231, 76, 60, 0.3);
-    }
-
-    .card {
-        background: white;
-        border-radius: 15px;
-        padding: 25px;
-        margin-bottom: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-
-    h2 {
-        color: #667eea;
-        margin-bottom: 20px;
-        font-size: 1.4em;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 8px;
-        color: #333;
-        font-weight: 500;
-    }
-
-    input[type="text"],
-    input[type="number"],
-    input[type="date"],
-    select {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        font-size: 16px;
-        transition: border-color 0.3s;
-    }
-
-    input:focus,
-    select:focus {
-        outline: none;
-        border-color: #667eea;
-    }
-
-    .personas-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 10px;
-        margin-top: 10px;
-    }
-
-    .persona-check {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        background: #f5f5f5;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.2s;
-    }
-
-    .persona-check:hover {
-        background: #e8e8e8;
-    }
-
-    .persona-check input[type="checkbox"] {
-        margin-right: 8px;
-        width: 18px;
-        height: 18px;
-        cursor: pointer;
-    }
-
-    .btn {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 14px 30px;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        width: 100%;
-        transition: transform 0.2s;
-    }
-
-    .btn:hover {
-        transform: translateY(-2px);
-    }
-
-    .btn:active {
-        transform: translateY(0);
-    }
-
-    .btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
-
-    .gasto-item {
-        background: #f9f9f9;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 10px;
-        border-left: 4px solid #667eea;
-    }
-
-    .gasto-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: start;
-        margin-bottom: 8px;
-    }
-
-    .gasto-concepto {
-        font-weight: 600;
-        color: #333;
-        font-size: 1.1em;
-    }
-
-    .gasto-monto {
-        font-weight: 700;
-        color: #667eea;
-        font-size: 1.2em;
-    }
-
-    .gasto-detalles {
-        font-size: 0.9em;
-        color: #666;
-        margin-top: 5px;
-    }
-
-    .gasto-participantes {
-        margin-top: 8px;
-        font-size: 0.85em;
-        color: #888;
-    }
-
-    .btn-delete {
-        background: #ff4757;
-        color: white;
-        border: none;
-        padding: 6px 12px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 0.85em;
-        margin-top: 10px;
-    }
-
-    .balance-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px;
-        background: #f9f9f9;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
-
-    .balance-positivo {
-        border-left: 4px solid #2ecc71;
-    }
-
-    .balance-negativo {
-        border-left: 4px solid #e74c3c;
-    }
-
-    .balance-nombre {
-        font-weight: 600;
-        color: #333;
-    }
-
-    .balance-monto {
-        font-weight: 700;
-        font-size: 1.1em;
-    }
-
-    .balance-monto.positivo {
-        color: #2ecc71;
-    }
-
-    .balance-monto.negativo {
-        color: #e74c3c;
-    }
-
-    .deuda-item {
-        background: #fff3cd;
-        padding: 12px;
-        border-radius: 8px;
-        margin-bottom: 8px;
-        border-left: 4px solid #ffc107;
-    }
-
-    .no-gastos {
-        text-align: center;
-        color: #999;
-        padding: 30px;
-    }
-
-    .toggle-division {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 15px;
-    }
-
-    .toggle-btn {
-        flex: 1;
-        padding: 10px;
-        border: 2px solid #e0e0e0;
-        background: white;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .toggle-btn.active {
-        background: #667eea;
-        color: white;
-        border-color: #667eea;
-    }
-
-    .loading {
-        text-align: center;
-        padding: 40px;
-        color: white;
-        font-size: 1.2em;
-    }
-
-    .total-gastos {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 20px;
-        border-radius: 12px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .total-gastos h3 {
-        font-size: 1em;
-        margin-bottom: 10px;
-        opacity: 0.9;
-    }
-
-    .total-gastos .monto-total {
-        font-size: 2.5em;
-        font-weight: 700;
-    }
-
-    @media (max-width: 600px) {
-        .personas-grid {
-            grid-template-columns: repeat(2, 1fr);
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
         }
-    }
-</style>
-```
 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .sync-status {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .sync-status.connected {
+            background: rgba(46, 204, 113, 0.3);
+        }
+
+        .sync-status.disconnected {
+            background: rgba(231, 76, 60, 0.3);
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .persona-check {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .persona-check:hover {
+            background: #e8e8e8;
+        }
+
+        .persona-check input[type="checkbox"] {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .gasto-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .gasto-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 8px;
+        }
+
+        .gasto-concepto {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .gasto-monto {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        .gasto-detalles {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .gasto-participantes {
+            margin-top: 8px;
+            font-size: 0.85em;
+            color: #888;
+        }
+
+        .btn-delete {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+
+        .balance-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .balance-positivo {
+            border-left: 4px solid #2ecc71;
+        }
+
+        .balance-negativo {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .balance-nombre {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .balance-monto {
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .balance-monto.positivo {
+            color: #2ecc71;
+        }
+
+        .balance-monto.negativo {
+            color: #e74c3c;
+        }
+
+        .deuda-item {
+            background: #fff3cd;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .no-gastos {
+            text-align: center;
+            color: #999;
+            padding: 30px;
+        }
+
+        .toggle-division {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .toggle-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .total-gastos {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .total-gastos h3 {
+            font-size: 1em;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .total-gastos .monto-total {
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        @media (max-width: 600px) {
+            .personas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <div class="loading">Cargando...</div>
     </div>
 
-```
-<!-- Firebase SDKs -->
-<script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-    import { getDatabase, ref, push, onValue, remove } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getDatabase, ref, push, onValue, remove } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
 
-    // Configuración de Firebase
-    const firebaseConfig = {
-        apiKey: "AIzaSyCAs-dtmmyghnMUb_S2MTPfGhsPQtvEFlU",
-        authDomain: "app-gastos-carilo.firebaseapp.com",
-        databaseURL: "https://app-gastos-carilo-default-rtdb.firebaseio.com",
-        projectId: "app-gastos-carilo",
-        storageBucket: "app-gastos-carilo.firebasestorage.app",
-        messagingSenderId: "607841813646",
-        appId: "1:607841813646:web:be2342b09612124bea75df"
-    };
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCAs-dtmmyghnMUb_S2MTPfGhsPQtvEFlU",
+            authDomain: "app-gastos-carilo.firebaseapp.com",
+            databaseURL: "https://app-gastos-carilo-default-rtdb.firebaseio.com",
+            projectId: "app-gastos-carilo",
+            storageBucket: "app-gastos-carilo.firebasestorage.app",
+            messagingSenderId: "607841813646",
+            appId: "1:607841813646:web:be2342b09612124bea75df"
+        };
 
-    // Inicializar Firebase
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-    const gastosRef = ref(database, 'gastos');
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const gastosRef = ref(database, 'gastos');
 
-    const personas = ['Martu', 'Coti', 'Fede', 'Mati', 'Mica', 'Juani', 'Juan'];
-    let gastos = [];
-    let conectado = false;
+        const personas = ['Martu', 'Coti', 'Fede', 'Mati', 'Mica', 'Juani', 'Juan'];
+        let gastos = [];
+        let conectado = false;
 
-    function renderApp() {
-        document.getElementById('app').innerHTML = `
-            <div class="container">
-                <h1>💰 Gastos del Viaje</h1>
+        function renderApp() {
+            document.getElementById('app').innerHTML = `
+                <div class="container">
+                    <h1>💰 Gastos del Viaje</h1>
 
-                <div class="sync-status ${conectado ? 'connected' : 'disconnected'}" id="syncStatus">
-                    ${conectado ? '🟢 Conectado - Sincronización activa' : '🔴 Sin conexión'}
-                </div>
+                    <div class="sync-status ${conectado ? 'connected' : 'disconnected'}" id="syncStatus">
+                        ${conectado ? '🟢 Conectado - Sincronización activa' : '🔴 Sin conexión'}
+                    </div>
 
-                <!-- Total de gastos -->
-                <div class="total-gastos">
-                    <h3>Total gastado en el viaje</h3>
-                    <div class="monto-total">$${calcularTotalGastos().toFixed(2)}</div>
-                </div>
+                    <!-- Total de gastos -->
+                    <div class="total-gastos">
+                        <h3>Total gastado en el viaje</h3>
+                        <div class="monto-total">$${calcularTotalGastos().toFixed(2)}</div>
+                    </div>
 
-                <!-- Formulario para agregar gastos -->
-                <div class="card">
-                    <h2>Agregar Gasto</h2>
-                    <form id="gastoForm">
-                        <div class="form-group">
-                            <label>Fecha</label>
-                            <input type="date" id="fecha" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Concepto</label>
-                            <input type="text" id="concepto" placeholder="Ej: Cena, Combustible, etc." required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Monto ($)</label>
-                            <input type="number" id="monto" step="0.01" placeholder="0.00" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>¿Quién pagó?</label>
-                            <select id="quienPago" required>
-                                <option value="">Seleccionar...</option>
-                                ${personas.map(p => `<option value="${p}">${p}</option>`).join('')}
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Dividir gasto</label>
-                            <div class="toggle-division">
-                                <button type="button" class="toggle-btn active" id="btnTodos">Entre todos</button>
-                                <button type="button" class="toggle-btn" id="btnSeleccionar">Seleccionar personas</button>
+                    <!-- Formulario para agregar gastos -->
+                    <div class="card">
+                        <h2>Agregar Gasto</h2>
+                        <form id="gastoForm">
+                            <div class="form-group">
+                                <label>Fecha</label>
+                                <input type="date" id="fecha" required>
                             </div>
-                        </div>
 
-                        <div class="form-group" id="personasContainer" style="display: none;">
-                            <label>¿Entre quiénes se divide?</label>
-                            <div class="personas-grid">
-                                ${personas.map(p => `
-                                    <label class="persona-check">
-                                        <input type="checkbox" name="participante" value="${p}">
-                                        <span>${p}</span>
-                                    </label>
-                                `).join('')}
+                            <div class="form-group">
+                                <label>Concepto</label>
+                                <input type="text" id="concepto" placeholder="Ej: Cena, Combustible, etc." required>
                             </div>
-                        </div>
 
-                        <button type="submit" class="btn" ${conectado ? '' : 'disabled'}>
-                            ${conectado ? 'Agregar Gasto' : 'Sin conexión...'}
-                        </button>
-                    </form>
-                </div>
+                            <div class="form-group">
+                                <label>Monto ($)</label>
+                                <input type="number" id="monto" step="0.01" placeholder="0.00" required>
+                            </div>
 
-                <!-- Resumen de balances -->
-                <div class="card">
-                    <h2>Resumen de Balances</h2>
-                    <div id="balances">${renderBalances()}</div>
-                </div>
+                            <div class="form-group">
+                                <label>¿Quién pagó?</label>
+                                <select id="quienPago" required>
+                                    <option value="">Seleccionar...</option>
+                                    ${personas.map(p => `<option value="${p}">${p}</option>`).join('')}
+                                </select>
+                            </div>
 
-                <!-- Liquidación de deudas -->
-                <div class="card">
-                    <h2>¿Quién le debe a quién?</h2>
-                    <div id="deudas">${renderDeudas()}</div>
-                </div>
+                            <div class="form-group">
+                                <label>Dividir gasto</label>
+                                <div class="toggle-division">
+                                    <button type="button" class="toggle-btn active" id="btnTodos">Entre todos</button>
+                                    <button type="button" class="toggle-btn" id="btnSeleccionar">Seleccionar personas</button>
+                                </div>
+                            </div>
 
-                <!-- Lista de gastos -->
-                <div class="card">
-                    <h2>Historial de Gastos</h2>
-                    <div id="listaGastos">${renderGastos()}</div>
-                </div>
-            </div>
-        `;
+                            <div class="form-group" id="personasContainer" style="display: none;">
+                                <label>¿Entre quiénes se divide?</label>
+                                <div class="personas-grid">
+                                    ${personas.map(p => `
+                                        <label class="persona-check">
+                                            <input type="checkbox" name="participante" value="${p}">
+                                            <span>${p}</span>
+                                        </label>
+                                    `).join('')}
+                                </div>
+                            </div>
 
-        // Establecer fecha de hoy
-        document.getElementById('fecha').valueAsDate = new Date();
+                            <button type="submit" class="btn" ${conectado ? '' : 'disabled'}>
+                                ${conectado ? 'Agregar Gasto' : 'Sin conexión...'}
+                            </button>
+                        </form>
+                    </div>
 
-        // Event listeners
-        setupEventListeners();
-    }
+                    <!-- Resumen de balances -->
+                    <div class="card">
+                        <h2>Resumen de Balances</h2>
+                        <div id="balances">${renderBalances()}</div>
+                    </div>
 
-    function setupEventListeners() {
-        // Toggle división
-        document.getElementById('btnTodos').addEventListener('click', function() {
-            this.classList.add('active');
-            document.getElementById('btnSeleccionar').classList.remove('active');
-            document.getElementById('personasContainer').style.display = 'none';
-        });
+                    <!-- Liquidación de deudas -->
+                    <div class="card">
+                        <h2>¿Quién le debe a quién?</h2>
+                        <div id="deudas">${renderDeudas()}</div>
+                    </div>
 
-        document.getElementById('btnSeleccionar').addEventListener('click', function() {
-            this.classList.add('active');
-            document.getElementById('btnTodos').classList.remove('active');
-            document.getElementById('personasContainer').style.display = 'block';
-            
-            // Marcar todos los checkboxes por defecto
-            document.querySelectorAll('input[name="participante"]').forEach(cb => {
-                cb.checked = true;
-            });
-        });
-
-        // Submit form
-        document.getElementById('gastoForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            if (!conectado) {
-                alert('No hay conexión a internet');
-                return;
-            }
-
-            const fecha = document.getElementById('fecha').value;
-            const concepto = document.getElementById('concepto').value;
-            const monto = parseFloat(document.getElementById('monto').value);
-            const quienPago = document.getElementById('quienPago').value;
-
-            let participantes;
-            if (document.getElementById('btnTodos').classList.contains('active')) {
-                participantes = [...personas];
-            } else {
-                participantes = Array.from(document.querySelectorAll('input[name="participante"]:checked'))
-                    .map(cb => cb.value);
-                
-                if (participantes.length === 0) {
-                    alert('Debes seleccionar al menos una persona');
-                    return;
-                }
-            }
-
-            const gasto = {
-                fecha,
-                concepto,
-                monto,
-                quienPago,
-                participantes,
-                timestamp: Date.now()
-            };
-
-            try {
-                await push(gastosRef, gasto);
-                
-                // Resetear formulario
-                this.reset();
-                document.getElementById('fecha').valueAsDate = new Date();
-                document.getElementById('btnTodos').click();
-            } catch (error) {
-                alert('Error al guardar el gasto: ' + error.message);
-            }
-        });
-
-        // Delete buttons
-        document.querySelectorAll('.btn-delete').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const id = this.dataset.id;
-                eliminarGasto(id);
-            });
-        });
-    }
-
-    async function eliminarGasto(id) {
-        if (confirm('¿Seguro que quieres eliminar este gasto?')) {
-            try {
-                await remove(ref(database, `gastos/${id}`));
-            } catch (error) {
-                alert('Error al eliminar: ' + error.message);
-            }
-        }
-    }
-
-    function calcularTotalGastos() {
-        return gastos.reduce((sum, gasto) => sum + gasto.monto, 0);
-    }
-
-    function calcularBalances() {
-        const balances = {};
-        personas.forEach(p => balances[p] = 0);
-
-        gastos.forEach(gasto => {
-            // Solo considerar participantes del gasto
-            if (!gasto.participantes || gasto.participantes.length === 0) {
-                // Si no hay participantes definidos, asumir todos
-                gasto.participantes = [...personas];
-            }
-            
-            const montoPorPersona = gasto.monto / gasto.participantes.length;
-            
-            // El que pagó recibe el monto total
-            balances[gasto.quienPago] += gasto.monto;
-            
-            // Solo los participantes deben pagar su parte
-            gasto.participantes.forEach(participante => {
-                balances[participante] -= montoPorPersona;
-            });
-        });
-
-        return balances;
-    }
-
-    function calcularDeudas() {
-        const balances = calcularBalances();
-        const deudores = [];
-        const acreedores = [];
-
-        Object.entries(balances).forEach(([persona, balance]) => {
-            if (balance < -0.01) {
-                deudores.push({ persona, monto: -balance });
-            } else if (balance > 0.01) {
-                acreedores.push({ persona, monto: balance });
-            }
-        });
-
-        const transacciones = [];
-        let i = 0, j = 0;
-
-        while (i < deudores.length && j < acreedores.length) {
-            const pago = Math.min(deudores[i].monto, acreedores[j].monto);
-            
-            transacciones.push({
-                de: deudores[i].persona,
-                a: acreedores[j].persona,
-                monto: pago
-            });
-
-            deudores[i].monto -= pago;
-            acreedores[j].monto -= pago;
-
-            if (deudores[i].monto < 0.01) i++;
-            if (acreedores[j].monto < 0.01) j++;
-        }
-
-        return transacciones;
-    }
-
-    function renderGastos() {
-        if (gastos.length === 0) {
-            return '<div class="no-gastos">No hay gastos registrados todavía</div>';
-        }
-
-        const gastosOrdenados = [...gastos].sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
-        
-        return gastosOrdenados.map(gasto => `
-            <div class="gasto-item">
-                <div class="gasto-header">
-                    <div class="gasto-concepto">${gasto.concepto}</div>
-                    <div class="gasto-monto">$${gasto.monto.toFixed(2)}</div>
-                </div>
-                <div class="gasto-detalles">
-                    📅 ${new Date(gasto.fecha + 'T00:00:00').toLocaleDateString('es-AR')} • 
-                    💳 Pagó: ${gasto.quienPago}
-                </div>
-                <div class="gasto-participantes">
-                    Dividido entre: ${gasto.participantes.join(', ')} 
-                    (${(gasto.monto / gasto.participantes.length).toFixed(2)} c/u)
-                </div>
-                <button class="btn-delete" data-id="${gasto.id}">Eliminar</button>
-            </div>
-        `).join('');
-    }
-
-    function renderBalances() {
-        const balances = calcularBalances();
-        
-        if (gastos.length === 0) {
-            return '<div class="no-gastos">No hay movimientos todavía</div>';
-        }
-
-        const balancesOrdenados = Object.entries(balances)
-            .sort((a, b) => b[1] - a[1]);
-
-        return balancesOrdenados.map(([persona, balance]) => {
-            const esPositivo = balance > 0.01;
-            const esNegativo = balance < -0.01;
-            const clase = esPositivo ? 'balance-positivo' : (esNegativo ? 'balance-negativo' : '');
-            const claseMonto = esPositivo ? 'positivo' : (esNegativo ? 'negativo' : '');
-            
-            return `
-                <div class="balance-item ${clase}">
-                    <div class="balance-nombre">${persona}</div>
-                    <div class="balance-monto ${claseMonto}">
-                        ${balance > 0 ? '+' : ''}$${balance.toFixed(2)}
+                    <!-- Lista de gastos -->
+                    <div class="card">
+                        <h2>Historial de Gastos</h2>
+                        <div id="listaGastos">${renderGastos()}</div>
                     </div>
                 </div>
             `;
-        }).join('');
-    }
 
-    function renderDeudas() {
-        const deudas = calcularDeudas();
-        
-        if (deudas.length === 0) {
-            return '<div class="no-gastos">¡Todo saldado! 🎉</div>';
+            // Establecer fecha de hoy
+            document.getElementById('fecha').valueAsDate = new Date();
+
+            // Event listeners
+            setupEventListeners();
         }
 
-        return deudas.map(deuda => `
-            <div class="deuda-item">
-                <strong>${deuda.de}</strong> debe pagarle a <strong>${deuda.a}</strong>: 
-                <strong>$${deuda.monto.toFixed(2)}</strong>
-            </div>
-        `).join('');
-    }
-
-    // Escuchar cambios en tiempo real
-    onValue(gastosRef, (snapshot) => {
-        conectado = true;
-        gastos = [];
-        
-        snapshot.forEach((childSnapshot) => {
-            gastos.push({
-                id: childSnapshot.key,
-                ...childSnapshot.val()
+        function setupEventListeners() {
+            // Toggle división
+            document.getElementById('btnTodos').addEventListener('click', function() {
+                this.classList.add('active');
+                document.getElementById('btnSeleccionar').classList.remove('active');
+                document.getElementById('personasContainer').style.display = 'none';
             });
+
+            document.getElementById('btnSeleccionar').addEventListener('click', function() {
+                this.classList.add('active');
+                document.getElementById('btnTodos').classList.remove('active');
+                document.getElementById('personasContainer').style.display = 'block';
+                
+                // Marcar todos los checkboxes por defecto
+                document.querySelectorAll('input[name="participante"]').forEach(cb => {
+                    cb.checked = true;
+                });
+            });
+
+            // Submit form
+            document.getElementById('gastoForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                if (!conectado) {
+                    alert('No hay conexión a internet');
+                    return;
+                }
+
+                const fecha = document.getElementById('fecha').value;
+                const concepto = document.getElementById('concepto').value;
+                const monto = parseFloat(document.getElementById('monto').value);
+                const quienPago = document.getElementById('quienPago').value;
+
+                let participantes;
+                if (document.getElementById('btnTodos').classList.contains('active')) {
+                    participantes = [...personas];
+                } else {
+                    participantes = Array.from(document.querySelectorAll('input[name="participante"]:checked'))
+                        .map(cb => cb.value);
+                    
+                    if (participantes.length === 0) {
+                        alert('Debes seleccionar al menos una persona');
+                        return;
+                    }
+                }
+
+                // DEBUG: mostrar quiénes quedaron seleccionados
+                alert('Guardando con participantes: ' + participantes.join(', '));
+
+                const gasto = {
+                    fecha,
+                    concepto,
+                    monto,
+                    quienPago,
+                    participantes,
+                    timestamp: Date.now()
+                };
+
+                try {
+                    await push(gastosRef, gasto);
+                    
+                    // Resetear formulario
+                    this.reset();
+                    document.getElementById('fecha').valueAsDate = new Date();
+                    document.getElementById('btnTodos').click();
+                } catch (error) {
+                    alert('Error al guardar el gasto: ' + error.message);
+                }
+            });
+
+            // Delete buttons
+            document.querySelectorAll('.btn-delete').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.dataset.id;
+                    eliminarGasto(id);
+                });
+            });
+        }
+
+        async function eliminarGasto(id) {
+            if (confirm('¿Seguro que quieres eliminar este gasto?')) {
+                try {
+                    await remove(ref(database, `gastos/${id}`));
+                } catch (error) {
+                    alert('Error al eliminar: ' + error.message);
+                }
+            }
+        }
+
+        function calcularTotalGastos() {
+            return gastos.reduce((sum, gasto) => sum + gasto.monto, 0);
+        }
+
+        function calcularBalances() {
+            const balances = {};
+            personas.forEach(p => balances[p] = 0);
+
+            gastos.forEach(gasto => {
+                // Solo considerar participantes del gasto
+                if (!gasto.participantes || gasto.participantes.length === 0) {
+                    // Si no hay participantes definidos, asumir todos
+                    gasto.participantes = [...personas];
+                }
+                
+                const montoPorPersona = gasto.monto / gasto.participantes.length;
+                
+                // El que pagó recibe el monto total
+                balances[gasto.quienPago] += gasto.monto;
+                
+                // Solo los participantes deben pagar su parte
+                gasto.participantes.forEach(participante => {
+                    balances[participante] -= montoPorPersona;
+                });
+            });
+
+            return balances;
+        }
+
+        function calcularDeudas() {
+            const balances = calcularBalances();
+            const deudores = [];
+            const acreedores = [];
+
+            Object.entries(balances).forEach(([persona, balance]) => {
+                if (balance < -0.01) {
+                    deudores.push({ persona, monto: -balance });
+                } else if (balance > 0.01) {
+                    acreedores.push({ persona, monto: balance });
+                }
+            });
+
+            const transacciones = [];
+            let i = 0, j = 0;
+
+            while (i < deudores.length && j < acreedores.length) {
+                const pago = Math.min(deudores[i].monto, acreedores[j].monto);
+                
+                transacciones.push({
+                    de: deudores[i].persona,
+                    a: acreedores[j].persona,
+                    monto: pago
+                });
+
+                deudores[i].monto -= pago;
+                acreedores[j].monto -= pago;
+
+                if (deudores[i].monto < 0.01) i++;
+                if (acreedores[j].monto < 0.01) j++;
+            }
+
+            return transacciones;
+        }
+
+        function renderGastos() {
+            if (gastos.length === 0) {
+                return '<div class="no-gastos">No hay gastos registrados todavía</div>';
+            }
+
+            const gastosOrdenados = [...gastos].sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+            
+            return gastosOrdenados.map(gasto => `
+                <div class="gasto-item">
+                    <div class="gasto-header">
+                        <div class="gasto-concepto">${gasto.concepto}</div>
+                        <div class="gasto-monto">$${gasto.monto.toFixed(2)}</div>
+                    </div>
+                    <div class="gasto-detalles">
+                        📅 ${new Date(gasto.fecha + 'T00:00:00').toLocaleDateString('es-AR')} • 
+                        💳 Pagó: ${gasto.quienPago}
+                    </div>
+                    <div class="gasto-participantes">
+                        Dividido entre: ${gasto.participantes.join(', ')} 
+                        (${(gasto.monto / gasto.participantes.length).toFixed(2)} c/u)
+                    </div>
+                    <button class="btn-delete" data-id="${gasto.id}">Eliminar</button>
+                </div>
+            `).join('');
+        }
+
+        function renderBalances() {
+            const balances = calcularBalances();
+            
+            if (gastos.length === 0) {
+                return '<div class="no-gastos">No hay movimientos todavía</div>';
+            }
+
+            const balancesOrdenados = Object.entries(balances)
+                .sort((a, b) => b[1] - a[1]);
+
+            return balancesOrdenados.map(([persona, balance]) => {
+                const esPositivo = balance > 0.01;
+                const esNegativo = balance < -0.01;
+                const clase = esPositivo ? 'balance-positivo' : (esNegativo ? 'balance-negativo' : '');
+                const claseMonto = esPositivo ? 'positivo' : (esNegativo ? 'negativo' : '');
+                
+                return `
+                    <div class="balance-item ${clase}">
+                        <div class="balance-nombre">${persona}</div>
+                        <div class="balance-monto ${claseMonto}">
+                            ${balance > 0 ? '+' : ''}$${balance.toFixed(2)}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderDeudas() {
+            const deudas = calcularDeudas();
+            
+            if (deudas.length === 0) {
+                return '<div class="no-gastos">¡Todo saldado! 🎉</div>';
+            }
+
+            return deudas.map(deuda => `
+                <div class="deuda-item">
+                    <strong>${deuda.de}</strong> debe pagarle a <strong>${deuda.a}</strong>: 
+                    <strong>$${deuda.monto.toFixed(2)}</strong>
+                </div>
+            `).join('');
+        }
+
+        // Escuchar cambios en tiempo real
+        onValue(gastosRef, (snapshot) => {
+            conectado = true;
+            gastos = [];
+            
+            snapshot.forEach((childSnapshot) => {
+                gastos.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+
+            renderApp();
+        }, (error) => {
+            conectado = false;
+            console.error('Error de conexión:', error);
+            renderApp();
         });
 
+        // Inicializar
         renderApp();
-    }, (error) => {
-        conectado = false;
-        console.error('Error de conexión:', error);
-        renderApp();
-    });
-
-    // Inicializar
-    renderApp();
-</script>
-```
-
+    </script>
 </body>
 </html>
